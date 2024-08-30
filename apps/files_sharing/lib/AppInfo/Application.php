@@ -12,10 +12,12 @@ use OC\User\DisplayNameCache;
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
 use OCA\Files\Event\LoadSidebar;
 use OCA\Files_Sharing\Capabilities;
+use OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent as BeforePublicShareRenderedEvent;
 use OCA\Files_Sharing\External\Manager;
 use OCA\Files_Sharing\External\MountProvider as ExternalMountProvider;
 use OCA\Files_Sharing\Helper;
 use OCA\Files_Sharing\Listener\BeforeDirectFileDownloadListener;
+use OCA\Files_Sharing\Listener\BeforePublicShareRenderedListener;
 use OCA\Files_Sharing\Listener\BeforeZipCreatedListener;
 use OCA\Files_Sharing\Listener\LoadAdditionalListener;
 use OCA\Files_Sharing\Listener\LoadPublicFileRequestAuthListener;
@@ -100,6 +102,9 @@ class Application extends App implements IBootstrap {
 
 		// File request auth
 		$context->registerEventListener(BeforeTemplateRenderedEvent::class, LoadPublicFileRequestAuthListener::class);
+
+		// Public share
+		$context->registerEventListener(BeforePublicShareRenderedEvent::class, BeforePublicShareRenderedListener::class);
 	}
 
 	public function boot(IBootContext $context): void {

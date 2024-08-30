@@ -58,6 +58,7 @@ return array(
     'OCA\\Files_Sharing\\ISharedMountPoint' => $baseDir . '/../lib/ISharedMountPoint.php',
     'OCA\\Files_Sharing\\ISharedStorage' => $baseDir . '/../lib/ISharedStorage.php',
     'OCA\\Files_Sharing\\Listener\\BeforeDirectFileDownloadListener' => $baseDir . '/../lib/Listener/BeforeDirectFileDownloadListener.php',
+    'OCA\\Files_Sharing\\Listener\\BeforePublicShareRenderedListener' => $baseDir . '/../lib/Listener/BeforePublicShareRenderedListener.php',
     'OCA\\Files_Sharing\\Listener\\BeforeZipCreatedListener' => $baseDir . '/../lib/Listener/BeforeZipCreatedListener.php',
     'OCA\\Files_Sharing\\Listener\\LoadAdditionalListener' => $baseDir . '/../lib/Listener/LoadAdditionalListener.php',
     'OCA\\Files_Sharing\\Listener\\LoadPublicFileRequestAuthListener' => $baseDir . '/../lib/Listener/LoadPublicFileRequestAuthListener.php',
