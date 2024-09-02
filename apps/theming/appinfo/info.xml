@@ -24,21 +24,20 @@
 		<nextcloud min-version="31" max-version="31"/>
 	</dependencies>
 
-	<settings>
-		<admin>OCA\Theming\Settings\Admin</admin>
-		<admin-section>OCA\Theming\Settings\AdminSection</admin-section>
-		<personal>OCA\Theming\Settings\Personal</personal>
-		<personal-section>OCA\Theming\Settings\PersonalSection</personal-section>
-	</settings>
-
 	<repair-steps>
 		<post-migration>
 			<step>OCA\Theming\Migration\InitBackgroundImagesMigration</step>
-			<step>OCA\Theming\Migration\SeparatePrimaryColorAndBackground</step>
 		</post-migration>
 	</repair-steps>
 
 	<commands>
 		<command>OCA\Theming\Command\UpdateConfig</command>
 	</commands>
+
+	<settings>
+		<admin>OCA\Theming\Settings\Admin</admin>
+		<admin-section>OCA\Theming\Settings\AdminSection</admin-section>
+		<personal>OCA\Theming\Settings\Personal</personal>
+		<personal-section>OCA\Theming\Settings\PersonalSection</personal-section>
+	</settings>
 </info>

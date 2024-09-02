@@ -272,23 +272,25 @@ class BackgroundService {
 		if (!array_key_exists($filename, self::SHIPPED_BACKGROUNDS)) {
 			throw new InvalidArgumentException('The given file name is invalid');
 		}
-		$this->setColorBackground(self::SHIPPED_BACKGROUNDS[$filename]['background_color']);
+		$this->setColorBackground(self::SHIPPED_BACKGROUNDS[$filename]['background_color'], $userId);
 		$this->config->setUserValue($userId, Application::APP_ID, 'background_image', $filename);
 		$this->config->setUserValue($userId, Application::APP_ID, 'primary_color', self::SHIPPED_BACKGROUNDS[$filename]['primary_color']);
 	}
 
 	/**
 	 * Set the background to color only
+	 * @param string|null $userId The user to set the color - default to current logged-in user
 	 */
-	public function setColorBackground(string $color): void {
-		if ($this->userId === null) {
+	public function setColorBackground(string $color, ?string $userId = null): void {
+		$userId = $userId ?? $this->userId;
+		if ($userId === null) {
 			throw new RuntimeException('No currently logged-in user');
 		}
 		if (!preg_match('/^#([0-9a-f]{3}|[0-9a-f]{6})$/i', $color)) {
 			throw new InvalidArgumentException('The given color is invalid');
 		}
-		$this->config->setUserValue($this->userId, Application::APP_ID, 'background_color', $color);
-		$this->config->setUserValue($this->userId, Application::APP_ID, 'background_image', self::BACKGROUND_COLOR);
+		$this->config->setUserValue($userId, Application::APP_ID, 'background_color', $color);
+		$this->config->setUserValue($userId, Application::APP_ID, 'background_image', self::BACKGROUND_COLOR);
 	}
 
 	public function deleteBackgroundImage(): void {
